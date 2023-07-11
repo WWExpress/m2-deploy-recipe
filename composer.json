@@ -1,5 +1,5 @@
 {
-    "name": "WWExpress/m2-deploy-recipe",
+    "name": "wwexpress/m2-deploy-recipe",
     "description": "Deployer Recipe for Magento 2",
     "type": "library",
     "license": "MIT",
