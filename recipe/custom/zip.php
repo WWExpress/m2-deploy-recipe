@@ -35,14 +35,9 @@ task('deploy:zip:upload', function () {
         $arguments .= sprintf(' %s', $serverArg);
     }
 
-    try {
-        print_r("$sshPort $arguments {{zip_path}} $sshUser@$server:{{release_path}}");
-        runLocally("scp -P $sshPort $arguments {{zip_path}} $sshUser@$server:{{release_path}}");
-    } catch (\Exception $e) {
-        print_r($e->getMessage());
-    }
+    runLocally("scp -P $sshPort $arguments {{zip_path}} $sshUser@$server:/microcloud/domains/wweupg/domains/staging3-m2.workwearexpress.com/___deploy/release");
 });
 
 task('deploy:zip:unzip', function () {
-    run('cd {{release_path}} && tar -xzf {{bundle_name}} && rm {{bundle_name}}');
+    run('cd /microcloud/domains/wweupg/domains/staging3-m2.workwearexpress.com/___deploy/release && tar -xzf {{bundle_name}} && rm {{bundle_name}}');
 });
