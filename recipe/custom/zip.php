@@ -35,7 +35,12 @@ task('deploy:zip:upload', function () {
         $arguments .= sprintf(' %s', $serverArg);
     }
 
-    runLocally("scp -P $sshPort $arguments {{zip_path}} $sshUser@$server:{{release_path}}");
+    try {
+        print_r("$sshPort $arguments {{zip_path}} $sshUser@$server:{{release_path}}");
+        runLocally("scp -P $sshPort $arguments {{zip_path}} $sshUser@$server:{{release_path}}");
+    } catch (\Exception $e) {
+        print_r($e->getMessage());
+    }
 });
 
 task('deploy:zip:unzip', function () {
