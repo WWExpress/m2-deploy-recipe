@@ -39,5 +39,5 @@ task('deploy:zip:upload', function () {
 });
 
 task('deploy:zip:unzip', function () {
-    run('cd /microcloud/domains/wweupg/domains/staging3-m2.workwearexpress.com/___deploy/release && tar -xzf {{bundle_name}} && rm {{bundle_name}}');
+    run('cd {{release_path}} && tar -xzf {{bundle_name}} && rm {{bundle_name}}');
 });
