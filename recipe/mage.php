@@ -68,7 +68,6 @@ task('release:atomic', [
     'deploy:clear_paths',
     'deploy:symlink',
     'deploy:unlock',
-    'deploy:cleanup',
     'deploy:success'
 ]);
 
@@ -81,7 +80,6 @@ task('release:upgrade', [
     'deploy:magento:upgrade',
     'deploy:symlink',
     'deploy:unlock',
-    'deploy:cleanup',
     'deploy:success'
 ]);
 
@@ -94,8 +92,13 @@ task('release:backup', [
     'deploy:magento:backup',
     'deploy:symlink',
     'deploy:unlock',
-    'deploy:cleanup',
     'deploy:success'
 ]);
 
 after('deploy:failed', 'deploy:unlock');
+
+task('debug', function () {
+    writeln(json_encode(get('releases_list')));
+});
+
+after('deploy:release', 'debug');
