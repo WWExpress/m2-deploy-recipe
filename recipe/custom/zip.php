@@ -35,7 +35,7 @@ task('deploy:zip:upload', function () {
         $arguments .= sprintf(' %s', $serverArg);
     }
 
-    runLocally("scp -P $sshPort $arguments {{zip_path}} $sshUser@$server:/microcloud/domains/wweupg/domains/staging3-m2.workwearexpress.com/___deploy/release");
+    runLocally("scp -P $sshPort $arguments {{zip_path}} $sshUser@$server:{{release_path}}");
 });
 
 task('deploy:zip:unzip', function () {
